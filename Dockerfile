@@ -5,8 +5,7 @@ ENV RUNDASHBOARD=${RUNDASHBOARD}
 
 RUN apt update && apt-get install -y sudo git
 RUN npm i -g pm2
-RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
-RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
+
 # Create node user
 RUN usermod -aG sudo node && \ 
  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
@@ -16,6 +15,8 @@ RUN usermod -aG sudo node && \
 
 # Copy cli src files as regular user
 WORKDIR /home/node/app
+RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
+RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
 COPY --chown=node:node . .
 RUN chown -R node /home/node /home/node/app 
 RUN ln -s /usr/src/app /home/node/app/validator

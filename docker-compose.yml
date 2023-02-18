@@ -5,9 +5,9 @@ services:
 #     container_name: shardeum-dashboard
     # network_mode: 'host'
     image: test-dashboard
-    build:
-      context: .
-      dockerfile: Dockerfile
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
     # volumes:
       # - './config.json:/usr/src/app/config.json:Z'
       # - './data/logs:/usr/src/app/logs:Z'

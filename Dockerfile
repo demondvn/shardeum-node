@@ -17,7 +17,7 @@ RUN usermod -aG sudo node && \
 # Copy cli src files as regular user
 WORKDIR /home/node/app
 COPY --chown=node:node . .
-RUN chown -R node /home/node /home/node/app
+RUN chown -R node /home/node /home/node/app /usr/src/app
 RUN ln -s /usr/src/app /home/node/app/validator
 # RUN ln -s /usr/src/app /home/node/app/validator
 USER node

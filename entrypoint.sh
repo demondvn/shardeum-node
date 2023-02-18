@@ -6,23 +6,23 @@ sleep 10;
 
 echo "Install PM2"
 
-npm i -g pm2
+# npm i -g pm2
 
 # Pull latest versions of the CLI and GUI
 
-git clone https://gitlab.com/shardeum/validator/cli.git
+# git clone https://gitlab.com/shardeum/validator/cli.git
 
-echo "Install the CLI"
-cd cli
-npm i --silent && npm link
-cd ..
+# echo "Install the CLI"
+# cd cli
+# npm i --silent && npm link
+# cd ..
 
 git clone https://gitlab.com/shardeum/validator/gui.git
 
-echo "Install the GUI"
-cd gui
-npm i --silent
-npm run build
+# echo "Install the GUI"
+# cd gui
+# npm i --silent
+# npm run build
 #openssl req -x509 -nodes -days 99999 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt -subj "/C=US/ST=Texas/L=Dallas/O=Shardeum/OU=Shardeum/CN=shardeum.org"
 
 # if CA.cnf does not exist, create it

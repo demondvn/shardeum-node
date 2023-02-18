@@ -1,10 +1,12 @@
-FROM registry.gitlab.com/shardeum/server:latest
+FROM nodejs:latest
 
 ARG RUNDASHBOARD=y
 ENV RUNDASHBOARD=${RUNDASHBOARD}
 
-RUN apt-get install -y sudo
-
+RUN apt-get install -y sudo git
+RUN npm i -g pm2
+RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
+RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
 # Create node user
 RUN usermod -aG sudo node && \ 
  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \

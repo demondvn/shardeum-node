@@ -17,7 +17,7 @@ echo "Install PM2"
 # npm i --silent && npm link
 # cd ..
 
-git clone https://gitlab.com/shardeum/validator/gui.git
+# git clone https://gitlab.com/shardeum/validator/gui.git
 
 # echo "Install the GUI"
 # cd gui

@@ -245,17 +245,18 @@ cat <<EOF
 
 EOF
 
-cd ${NODEHOME}
-if [[ "$(uname)" == "Darwin" ]]; then
-  sed -i '' "s/- '8080:8080'/- '$DASHPORT:$DASHPORT'/" docker-compose.yml
-  sed -i '' "s/- '9001-9010:9001-9010'/- '$SHMEXT:$SHMEXT'/" docker-compose.yml
-  sed -i '' "s/- '10001-10010:10001-10010'/- '$SHMINT:$SHMINT'/" docker-compose.yml
-else
-  sed -i "s/- '8080:8080'/- '$DASHPORT:$DASHPORT'/" docker-compose.yml
-  sed -i "s/- '9001-9010:9001-9010'/- '$SHMEXT:$SHMEXT'/" docker-compose.yml
-  sed -i "s/- '10001-10010:10001-10010'/- '$SHMINT:$SHMINT'/" docker-compose.yml
-fi
-./docker-up.sh
+# cd ${NODEHOME}
+# if [[ "$(uname)" == "Darwin" ]]; then
+#   sed -i '' "s/- '8080:8080'/- '$DASHPORT:$DASHPORT'/" docker-compose.yml
+#   sed -i '' "s/- '9001-9010:9001-9010'/- '$SHMEXT:$SHMEXT'/" docker-compose.yml
+#   sed -i '' "s/- '10001-10010:10001-10010'/- '$SHMINT:$SHMINT'/" docker-compose.yml
+# else
+#   sed -i "s/- '8080:8080'/- '$DASHPORT:$DASHPORT'/" docker-compose.yml
+#   sed -i "s/- '9001-9010:9001-9010'/- '$SHMEXT:$SHMEXT'/" docker-compose.yml
+#   sed -i "s/- '10001-10010:10001-10010'/- '$SHMINT:$SHMINT'/" docker-compose.yml
+# fi
+# ./docker-up.sh
+echo "To run ./docker-up.sh"
 
 echo "Starting image. This could take a while..."
 (docker-safe logs -f shardeum-dashboard &) | grep -q 'done'

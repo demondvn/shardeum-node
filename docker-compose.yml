@@ -14,8 +14,12 @@ services:
       # - './data/db:/usr/src/app/db:Z'
     # restart: 'always'
     env_file: .env
+    environment:
+      - DASHPORT=8080
     ports:
-      - '9001-9010:9001-9010'
-      - '10001-10010:10001-10010'
+      - '9001:9001'
+      - '10001:10001'
       - '8080:8080'
       - '3001:3001'
+    volumes:
+      - /mnt/blockstore/shardeum:/home/node/app

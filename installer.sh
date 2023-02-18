@@ -190,9 +190,9 @@ if [ -d "$NODEHOME" ]; then
   rm -rf "$NODEHOME"
 fi
 
-git clone https://gitlab.com/shardeum/validator/dashboard.git ${NODEHOME} &&
-  cd ${NODEHOME} &&
-  chmod a+x ./*.sh
+# git clone https://gitlab.com/shardeum/validator/dashboard.git ${NODEHOME} &&
+#   cd ${NODEHOME} &&
+#   chmod a+x ./*.sh
 
 cat <<EOF
 

@@ -12,7 +12,7 @@ RUN usermod -aG sudo node && \
  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
  chown -R node /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share /home/node /home/node/app
 RUN ln -s /usr/src/app /home/node/app/validator
-USER node
+# USER node
 
 # Copy cli src files as regular user
 WORKDIR /home/node/app

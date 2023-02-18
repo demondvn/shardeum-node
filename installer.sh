@@ -235,7 +235,7 @@ cat <<EOF
 EOF
 
 # cd ${NODEHOME} &&
-docker-safe build --no-cache -t test-dashboard -f Dockerfile --build-arg RUNDASHBOARD=${RUNDASHBOARD} .
+docker-safe build -t test-dashboard -f Dockerfile --build-arg RUNDASHBOARD=${RUNDASHBOARD} .
 
 cat <<EOF
 

@@ -15,5 +15,5 @@ docker-compose-safe() {
     sudo $cmd $@
   fi
 }
-
+read -p "How many instance you want (max 100): " SHARDEUM_INSTANCE
 docker-compose-safe -f docker-compose.yml up -d --scale "shardeum-dashboard=${SHARDEUM_INSTANCE}"

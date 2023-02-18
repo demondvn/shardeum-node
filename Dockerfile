@@ -3,7 +3,7 @@ FROM node:16
 ARG RUNDASHBOARD=y
 ENV RUNDASHBOARD=${RUNDASHBOARD}
 
-RUN apt-get install -y sudo git
+RUN apt update && apt-get install -y sudo git
 RUN npm i -g pm2
 RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
 RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build

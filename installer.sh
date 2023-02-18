@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-
+read -p "How many instance you want?" SHARDEUM_INSTANCE
+export SHARDEUM_INSTANCE=${SHARDEUM_INSTANCE}
 read -p "During this early stage of Betanet the Shardeum team will be collecting some performance and debugging info from your node to help improve future versions of the software.
 This is only temporary and will be discontinued as we get closer to mainnet.
 Thanks for running a node and helping to make Shardeum better.

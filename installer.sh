@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-read -p "How many instance you want?" SHARDEUM_INSTANCE
-export SHARDEUM_INSTANCE=${SHARDEUM_INSTANCE}
+
 read -p "During this early stage of Betanet the Shardeum team will be collecting some performance and debugging info from your node to help improve future versions of the software.
 This is only temporary and will be discontinued as we get closer to mainnet.
 Thanks for running a node and helping to make Shardeum better.
@@ -257,7 +256,7 @@ EOF
 #   sed -i "s/- '10001-10010:10001-10010'/- '$SHMINT:$SHMINT'/" docker-compose.yml
 # fi
 # ./docker-up.sh
-echo "To run ./docker-up.sh"
+echo "To run ./docker-up.sh number"
 
 echo "Starting image. This could take a while..."
 (docker-safe logs -f shardeum-dashboard &) | grep -q 'done'

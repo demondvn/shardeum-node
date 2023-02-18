@@ -159,7 +159,7 @@ done
 
 read -p "What base directory should the node use (defaults to ~/.shardeum): " NODEHOME
 NODEHOME=${NODEHOME:-~/.shardeum}
-
+mkdir NODEHOME
 # PS3='Select a network to connect to: '
 # options=("betanet")
 # select opt in "${options[@]}"
@@ -255,11 +255,11 @@ EOF
 #   sed -i "s/- '9001-9010:9001-9010'/- '$SHMEXT:$SHMEXT'/" docker-compose.yml
 #   sed -i "s/- '10001-10010:10001-10010'/- '$SHMINT:$SHMINT'/" docker-compose.yml
 # fi
-# ./docker-up.sh
+./docker-up.sh
 echo "To run ./docker-up.sh number"
 
 echo "Starting image. This could take a while..."
-# (docker-safe logs -f shardeum-dashboard &) | grep -q 'done'
+(docker-safe logs -f shardeum-dashboard &) | grep -q 'done'
 
 #Do not indent
 if [ $RUNDASHBOARD = "y" ]

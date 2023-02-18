@@ -259,7 +259,7 @@ EOF
 echo "To run ./docker-up.sh number"
 
 echo "Starting image. This could take a while..."
-(docker-safe logs -f shardeum-dashboard &) | grep -q 'done'
+# (docker-safe logs -f shardeum-dashboard &) | grep -q 'done'
 
 #Do not indent
 if [ $RUNDASHBOARD = "y" ]

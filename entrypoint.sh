@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-sudo chown -R node:node /home/node
-sudo chown -R node:node /usr/src/app
-sudo ln -s /usr/src/app /home/node/app/validator
-sleep 10;
+# sudo chown -R node:node /home/node
+# sudo chown -R node:node /usr/src/app
+# sudo ln -s /usr/src/app /home/node/app/validator
+# sleep 10;
 
-echo "Install PM2"
+# echo "Install PM2"
 
 # npm i -g pm2
 

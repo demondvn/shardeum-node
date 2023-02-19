@@ -12,4 +12,4 @@ docker-safe() {
   fi
 }
 
-docker-safe compose logs
+docker-safe compose logs --follow

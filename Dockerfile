@@ -23,4 +23,4 @@ CMD git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i -
 # RUN ln -s /usr/src/app /home/node/app/validator
 USER node
 # Start entrypoint script as regular user
-CMD ["./entrypoint.sh"]
+CMD ./entrypoint.sh || sleep 3600

@@ -18,7 +18,7 @@ WORKDIR /home/node/app
 COPY --chown=node:node entrypoint.sh entrypoint.sh
 RUN chmod 777 -R /home/node /home/node/app 
 RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
-CMD git clone https://gitlab.com/shardeum/validator/gui.git && ln -s gui /home/node/app/gui && cd gui && npm i --silent &&  npm run build
+RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
 RUN ln -s /usr/src/app /home/node/app/validator
 # RUN ln -s gui /home/node/app/gui
 USER node

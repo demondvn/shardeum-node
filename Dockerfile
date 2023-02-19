@@ -15,10 +15,10 @@ RUN usermod -aG sudo node && \
 
 # Copy cli src files as regular user
 WORKDIR /node
-COPY entrypoint.sh entrypoint.sh
 # RUN chmod 777 -R /home/node /home/node/app 
 RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
 RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
+COPY entrypoint.sh entrypoint.sh
 RUN ln -s /usr/src/app /node/validator
 # RUN ln -s gui /home/node/app/gui
 # USER node

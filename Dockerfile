@@ -19,7 +19,7 @@ COPY --chown=node:node . .
 RUN chown -R node /home/node /home/node/app 
 RUN git clone https://gitlab.com/shardeum/validator/cli.git && cd cli &&  npm i --silent && npm link
 RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
-RUN ln -s /usr/src/app /home/node/app/validator
+# RUN ln -s /usr/src/app /home/node/app/validator
 # RUN ln -s /usr/src/app /home/node/app/validator
 USER node
 # Start entrypoint script as regular user

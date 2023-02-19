@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "Start"
 sudo chown -R node:node /home/node
 sudo chown -R node:node /usr/src/app
 sudo ln -s /usr/src/app /home/node/app/validator
@@ -20,6 +21,7 @@ sudo ln -s /usr/src/app /home/node/app/validator
 # git clone https://gitlab.com/shardeum/validator/gui.git
 
 # echo "Install the GUI"
+ls
 cd gui
 # npm i --silent
 # npm run build

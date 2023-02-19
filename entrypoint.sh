@@ -2,7 +2,7 @@
 echo "Start"
 sudo chown -R node:node /home/node
 sudo chown -R node:node /usr/src/app
-sudo ln -s /usr/src/app /home/node/app/validator
+# sudo ln -s /usr/src/app /home/node/app/validator
 # sleep 10;
 
 # echo "Install PM2"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "Start"
-sudo chown -R node:node /home/node
-sudo chown -R node:node /usr/src/app
+# sudo chown -R node:node /home/node
+# sudo chown -R node:node /usr/src/app
 # sudo ln -s /usr/src/app /home/node/app/validator
 # sleep 10;
 

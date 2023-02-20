@@ -1,6 +1,10 @@
+# Shardeum node
 ## Clone
 	git clone https://github.com/demondvn/shardeum-node.git
-## Run
+## Install
 	cd shardeum-node
 	chmod +x *.sh
 	./installer.sh
+
+## Run (Append)
+	./docker-up.sh

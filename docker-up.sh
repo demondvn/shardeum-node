@@ -21,6 +21,7 @@ read -p "Password for Dash: " DASHPASS
 DASHPORT=8080
 SHMEXT=9001
 SHMINT=10001
+SERVERIP=$(curl https://ipinfo.io/ip)
 for index in $(seq 0 $((SHARDEUM_INSTANCE-1))); do
   echo "$((DASHPORT + index))"
   echo "$((SHMEXT + index))"
@@ -28,7 +29,7 @@ for index in $(seq 0 $((SHARDEUM_INSTANCE-1))); do
   docker run -d --rm --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index)) -e DASHPASS=$DASHPASS -e SHMINT=$((SHMINT + index)) -e DASHPORT=$((DASHPORT + index)) \
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) -p $((DASHPORT + index)):$((DASHPORT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
-  -e SERVERIP=$(curl https://ipinfo.io/ip) test-dashboard || continue
+  -e SERVERIP=$SERVERIP test-dashboard || continue
 done
 
 # docker run -d --rm --name shardeum-node-3 -e SHMEXT=9001 -e DASHPASS=P@ssw0rd -e SHMINT=10001 -e DASHPORT=8080 \

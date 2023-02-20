@@ -25,10 +25,10 @@ for index in $(seq 0 $((SHARDEUM_INSTANCE-1))); do
   echo "$((DASHPORT + index))"
   echo "$((SHMEXT + index))"
   echo "$((SHMINT + index))"
-  docker run -d --rm --name shardeum-node-$(index) -e SHMEXT=$((SHMEXT + index)) -e DASHPASS=$(DASHPASS) -e SHMINT=$((SHMINT + index)) -e DASHPORT=$((DASHPORT + index)) \
+  docker run -d --rm --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index)) -e DASHPASS=$DASHPASS -e SHMINT=$((SHMINT + index)) -e DASHPORT=$((DASHPORT + index)) \
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) -p $((DASHPORT + index)):$((DASHPORT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
-  -e SERVERIP=$(curl https://ipinfo.io/ip) test-dashboard || return
+  -e SERVERIP=$(curl https://ipinfo.io/ip) test-dashboard || continue
 done
 
 # docker run -d --rm --name shardeum-node-3 -e SHMEXT=9001 -e DASHPASS=P@ssw0rd -e SHMINT=10001 -e DASHPORT=8080 \

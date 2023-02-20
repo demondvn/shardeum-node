@@ -30,6 +30,7 @@ for index in $(seq 0 $((SHARDEUM_INSTANCE-1))); do
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) -p $((DASHPORT + index)):$((DASHPORT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
   -e SERVERIP=$SERVERIP test-dashboard || continue
+  echo "Start shardeum-node-$index Success"
 done
 
 # docker run -d --rm --name shardeum-node-3 -e SHMEXT=9001 -e DASHPASS=P@ssw0rd -e SHMINT=10001 -e DASHPORT=8080 \

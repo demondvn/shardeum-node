@@ -7,7 +7,7 @@ This is only temporary and will be discontinued as we get closer to mainnet.
 Thanks for running a node and helping to make Shardeum better.
 
 By running this installer, you agree to allow the Shardeum team to collect this data. (y/n)?: " WARNING_AGREE
-WARNING_AGREE=${WARNING_AGREE:-y}
+WARNING_AGREE=${WARNING_AGREE:-n}
 
 if [ $WARNING_AGREE != "y" ];
 then

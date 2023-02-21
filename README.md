@@ -10,7 +10,7 @@
 	./docker-up.sh
 
 ## check
-        ./status.sh
+	./status.sh
 
 
 ## Auto start

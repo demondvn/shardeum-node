@@ -106,8 +106,8 @@ echo "Start"
 
 operator-cli set external_port $SHMEXT
 operator-cli set internal_port $SHMINT
-operator-cli set rpc_ip sphinx.shardeum.org
-operator-cli set rpc_port 443 
+
+
 operator-cli start 
 
 echo "done";

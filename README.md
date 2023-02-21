@@ -14,4 +14,4 @@
 
 
 ## Auto start
-	echo "*/5 * * * * root /usr/bin/sh $(pwd)/start_all.sh" >> /etc/crontab && /etc/init.d/cron restart
+	echo "*/5 * * * * $(pwd)/start_all.sh" >> /etc/crontab && /etc/init.d/cron restart

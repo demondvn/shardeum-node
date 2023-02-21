@@ -12,4 +12,4 @@ docker-safe() {
   fi
 }
 
-docker-safe build  -t test-dashboard -f Dockerfile .
+docker-safe build  -t test-dashboard -f Dockerfile . --pull

@@ -5,4 +5,4 @@ if [ -n "$1" ]; then
 else
   read -p "Please enter a number: " number
 fi
-docker exec -it "shardeum-dashboard-$number" /bin/bash
+docker exec -it "shardeum-node-$number" /bin/bash

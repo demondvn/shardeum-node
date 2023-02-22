@@ -21,7 +21,9 @@
 	cd shardeum-node
 	git pull #(if error required commit or stash  Run >>  git stash && git pull )
 	chmod +x *.sh
+	./cleanup.sh 
 	./docker-build.sh
+	
 ## Clean all node
 	./cleanup.sh 
 ## Backup & restore

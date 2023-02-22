@@ -12,7 +12,7 @@
 ## check
 	./status.sh
 ## Exec shell
-	./shell <NODE number>
+	./shell.sh <NODE number>
 
 ## Auto start
 	echo "*/5 * * * * root $(pwd)/start_all.sh" >> /etc/crontab && /etc/init.d/cron restart

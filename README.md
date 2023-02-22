@@ -18,7 +18,7 @@
 
 ## Update
 	cd shardeum-node
-	git pull (if error required commit or stash > git stash && git pull )
+	git pull #(if error required commit or stash  Run >>  git stash && git pull )
 	chmod +x *.sh
 	./docker-build.sh
 ## Backup & restore

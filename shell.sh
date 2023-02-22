@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
-NODE = $1
-if [[!"$NODE"]]then
-  read -p "Insert node number: "NODE
-if
-docker exec -it "shardeum-dashboard-$NODE" /bin/bash
+#!/bin/bash
+
+if [ -n "$1" ]; then
+  number=$1
+else
+  read -p "Please enter a number: " number
+fi
+docker exec -it "shardeum-dashboard-$number" /bin/bash

@@ -21,6 +21,8 @@
 	git pull #(if error required commit or stash  Run >>  git stash && git pull )
 	chmod +x *.sh
 	./docker-build.sh
+## Clean all node
+	./cleanup.sh 
 ## Backup & restore
 	./backup.sh (check file in backup folder)
 	./restore.sh (to restore)

@@ -1,5 +1,6 @@
 
 #!/bin/bash
+apt install jq -y
 cd backup
 for file in $(ls shardeum-node-*.json | sed 's/\.json$//'); do
     echo "$file.json"

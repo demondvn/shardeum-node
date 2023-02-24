@@ -1,0 +1,5 @@
+while true; do
+  if operator-cli stake 10.1 | grep -q "byzantium" ; then
+    exit
+  fi
+done

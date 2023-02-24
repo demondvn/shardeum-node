@@ -103,12 +103,12 @@ echo "Start"
 # # Call the CLI command to start the GUI
 # operator-cli gui start
 # fi
-
+operator-cli start 
 operator-cli set external_port $SHMEXT
 operator-cli set internal_port $SHMINT
 
 
-operator-cli start 
+
 
 echo "done";
 

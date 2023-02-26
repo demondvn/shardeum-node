@@ -5,6 +5,8 @@ then
     sudo apt-get install screen
 fi
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do
-  screen -dmS "${docker_name}" bash -c " ./_start.sh ${docker_name}"
+  screen -dmS "${docker_name}" bash -c " ./_start.sh ${docker_name} > start.log"
   
 done
+sleep 5
+tail start.log 

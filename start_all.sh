@@ -6,7 +6,6 @@ then
 fi
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do
   screen -dmS "${docker_name}" bash -c " ./_start.sh ${docker_name} >> start.log"
-  echo "${docker_name}"
 done
-sleep 10
+sleep 15
 tail start.log 

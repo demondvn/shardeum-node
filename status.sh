@@ -1,8 +1,13 @@
 #!/bin/bash
-
+if ! command -v screen &> /dev/null
+then
+    echo "screen is not installed. Installing..."
+    sudo apt-get install screen
+fi
+current_time=$(date "+%Y-%m-%d %H:%M:%S")
+echo "${current_time}" > log
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do
-  echo "########## ${docker_name} ######### $(docker exec "${docker_name}" cat validator/package.json | grep version)"
-
-  docker exec "${docker_name}" operator-cli status | grep 'state\|totalTimeRunning\|earnings\|lockedStake\|nominatorAddress\|nomineeAddress'
-  echo ""
+    screen -dmS "${docker_name}" bash -c " ./_status.sh ${docker_name} | tr '\n' ' ' >> log && echo '' >> log"
 done
+#sleep 5
+tail -f log

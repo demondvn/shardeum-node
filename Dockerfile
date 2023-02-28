@@ -19,6 +19,7 @@ WORKDIR /node
 RUN git clone https://github.com/demondvn/shardeum_cli.git cli && cd cli &&  npm i --silent && npm link
 # RUN git clone https://gitlab.com/shardeum/validator/gui.git && cd gui && npm i --silent &&  npm run build
 COPY entrypoint.sh entrypoint.sh
+COPY .env .env
 RUN ln -s /usr/src/app /node/validator
 # RUN ln -s gui /home/node/app/gui
 # USER node

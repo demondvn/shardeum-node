@@ -17,13 +17,12 @@
 # }
 # # docker-compose-safe -f docker-compose.yml up -d --scale "shardeum-dashboard=${SHARDEUM_INSTANCE}"
 read -p "How many instance you want (max 100): " SHARDEUM_INSTANCE
+read -p "Start from:(0) " START_FROM
 
-
-SHMEXT=9001
-SHMINT=10001
+SHMEXT=$((9001 + START_FROM))
+SHMINT=$((10001 + START_FROM))
 SERVERIP=$(curl https://ipinfo.io/ip)
-for index in $(seq 0 $((SHARDEUM_INSTANCE-1))); do
-  echo "$((DASHPORT + index))"
+for index in $(seq $START_FROM $((START_FROM+SHARDEUM_INSTANCE-1))); do
   echo "$((SHMEXT + index))"
   echo "$((SHMINT + index))"
   docker run -d --rm --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \

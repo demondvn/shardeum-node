@@ -1,14 +1,9 @@
-#!/bin/bash
-if ! command -v screen &> /dev/null
-then
-    echo "screen is not installed. Installing..."
-    sudo apt-get install screen -y
-fi
-current_time=$(date "+%Y-%m-%d %H:%M:%S")
-echo "${current_time}" > log
-docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do
-  screen -dmS "${docker_name}" bash -c " ./_start.sh ${docker_name} >> start.log"
+@@ -6,6 +6,8 @@ docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name
+  if [[ "$state" == "stopped" ]]; then
+    echo "START SHARDEUM"
+    docker exec "${docker_name}" operator-cli start
+    docker exec "${docker_name}" sh -c 'operator-cli set external_port $SHMEXT'
+    docker exec "${docker_name}" sh -c 'operator-cli set internal_port $SHMINT'
+  fi
+
 done
-echo "\`cat start.log\` to more detail"
-sleep 30
-tail start.log 

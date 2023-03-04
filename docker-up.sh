@@ -25,7 +25,7 @@ SERVERIP=$(curl https://ipinfo.io/ip)
 for index in $(seq $START_FROM $((START_FROM+SHARDEUM_INSTANCE-1))); do
   echo "$((SHMEXT + index))"
   echo "$((SHMINT + index))"
-  docker run -d --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \
+  docker run -d --rm --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
   -e SERVERIP=$SERVERIP test-dashboard || continue

@@ -113,4 +113,5 @@ operator-cli set internal_port $SHMINT
 echo "done";
 
 # Keep container running
-tail -f /dev/null
+# tail -f /dev/null
+pm2 logs

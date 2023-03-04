@@ -159,7 +159,7 @@ done
 
 read -p "What base directory should the node use (defaults to ~/.shardeum): " NODEHOME
 NODEHOME=${NODEHOME:-~/.shardeum}
-mkdir NODEHOME
+# mkdir NODEHOME
 # PS3='Select a network to connect to: '
 # options=("betanet")
 # select opt in "${options[@]}"
@@ -235,7 +235,7 @@ cat <<EOF
 EOF
 
 # cd ${NODEHOME} &&
-docker-safe build -t test-dashboard -f Dockerfile --build-arg RUNDASHBOARD=${RUNDASHBOARD} .
+./docker-build
 
 cat <<EOF
 

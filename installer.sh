@@ -235,7 +235,7 @@ cat <<EOF
 EOF
 
 # cd ${NODEHOME} &&
-./docker-build
+./docker-build.sh
 
 cat <<EOF
 

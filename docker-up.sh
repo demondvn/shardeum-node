@@ -19,8 +19,8 @@
 read -p "How many instance you want (max 100): " SHARDEUM_INSTANCE
 read -p "Start from:(0) " START_FROM
 
-SHMEXT=$((9001 + START_FROM))
-SHMINT=$((10001 + START_FROM))
+SHMEXT=9001
+SHMINT=10001
 SERVERIP=$(curl https://ipinfo.io/ip)
 for index in $(seq $START_FROM $((START_FROM+SHARDEUM_INSTANCE-1))); do
   echo "$((SHMEXT + index))"

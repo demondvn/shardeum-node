@@ -15,7 +15,7 @@
 	./shell.sh <NODE number>
 
 ## Auto start
-	echo "*/5 * * * * root $(pwd)/start_all.sh" >> /etc/crontab && /etc/init.d/cron restart
+	echo "*/30 * * * * root $(pwd)/start_all.sh" >> /etc/crontab && /etc/init.d/cron restart
 
 ## Update
 	cd shardeum-node

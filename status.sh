@@ -10,7 +10,7 @@ trap out SIGINT
 function out(){
 echo -e "\nActive Node: $(cat log | grep -c 'active')"
 echo -e "Standby Node: $(cat log | grep -c 'standby')"
-echo -e "Total earning: $(cat log | grep 'earnings' | sed -E 's/.*[^0-9\.]([0-9\.]+)[^0-9\.]*$/\1/' | awk '{s+=$1} END {print s}')"
+echo -e "Total earning: $(cat log | grep 'currentRewards' | sed -E 's/.*[^0-9\.]([0-9\.]+)[^0-9\.]*$/\1/' | awk '{s+=$1} END {print s}')"
 exit 1
 }
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do

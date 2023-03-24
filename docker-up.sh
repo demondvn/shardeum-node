@@ -18,7 +18,7 @@
 # # docker-compose-safe -f docker-compose.yml up -d --scale "shardeum-dashboard=${SHARDEUM_INSTANCE}"
 read -p "How many instance you want (max 100): " SHARDEUM_INSTANCE
 read -p "Start from:(0) " START_FROM
-
+EXISTING_ARCHIVERS=[{"ip":"18.194.3.6","port":4000,"publicKey":"758b1c119412298802cd28dbfa394cdfeecc4074492d60844cc192d632d84de3"},{"ip":"139.144.19.178","port":4000,"publicKey":"840e7b59a95d3c5f5044f4bc62ab9fa94bc107d391001141410983502e3cde63"},{"ip":"139.144.43.47","port":4000,"publicKey":"7af699dd711074eb96a8d1103e32b589e511613ebb0c6a789a9e8791b2b05f34"},{"ip":"72.14.178.106","port":4000,"publicKey":"2db7c949632d26b87d7e7a5a4ad41c306f63ee972655121a37c5e4f52b00a542"}]
 SHMEXT=9001
 SHMINT=10001
 SERVERIP=$(curl https://ipinfo.io/ip)
@@ -28,7 +28,7 @@ for index in $(seq $START_FROM $((START_FROM+SHARDEUM_INSTANCE-1))); do
   docker run -d --restart unless-stopped --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
-  -e SERVERIP=$SERVERIP test-dashboard || continue
+  -e SERVERIP=$SERVERIP -e EXISTING_ARCHIVERS=$EXISTING_ARCHIVERS test-dashboard || continue
   echo "Start shardeum-node-$index Success"
 done
 

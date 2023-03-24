@@ -28,7 +28,7 @@ for index in $(seq $START_FROM $((START_FROM+SHARDEUM_INSTANCE-1))); do
   docker run -d --restart unless-stopped --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
-  -e SERVERIP=$SERVERIP -e EXISTING_ARCHIVERS=$EXISTING_ARCHIVERS test-dashboard || continue
+  -e SERVERIP=$SERVERIP -e EXISTING_ARCHIVERS="${EXISTING_ARCHIVERS}" test-dashboard || continue
   echo "Start shardeum-node-$index Success"
 done
 

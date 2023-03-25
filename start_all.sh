@@ -1,13 +1,15 @@
 #!/bin/bash
 
+# Get the names of all running Docker containers that start with "shardeum-node"
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do
-  port=$(docker exec "${docker_name}" operator-cli status | grep 'checkPort' | awk '{print $2}')
-  echo "$docker_name port open: $port"
-  if [[ "$port" != "true" ]]; then
-    echo "START SHARDEUM"
-    docker exec "${docker_name}" operator-cli start
-    docker exec "${docker_name}" sh -c 'operator-cli set external_port $SHMEXT'
-    docker exec "${docker_name}" sh -c 'operator-cli set internal_port $SHMINT'
+        echo "Check $docker_name"
+
+  # Send a curl command to the container to load a file
+  docker exec $docker_name /bin/bash -c 'curl -s 127.0.0.1:$SHMEXT/load'        
+  # Check the exit code of the previous command. If it failed, start the operator-cli
+  if [ $? -ne 0 ]; then
+        echo "Start $docker_name"
+    docker exec $docker_name operator-cli start
   fi
-  
+echo ""
 done

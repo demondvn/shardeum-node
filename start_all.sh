@@ -3,7 +3,7 @@
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do
   port=$(docker exec "${docker_name}" operator-cli status | grep 'checkPort' | awk '{print $2}')
   echo "$docker_name port open: $port"
-  if [[ "$port" == "false" ]]; then
+  if [[ "$port" != "true" ]]; then
     echo "START SHARDEUM"
     docker exec "${docker_name}" operator-cli start
     docker exec "${docker_name}" sh -c 'operator-cli set external_port $SHMEXT'

@@ -11,6 +11,12 @@ function out(){
 echo -e "\nActive Node: $(cat log | grep -c 'active')"
 echo -e "Standby Node: $(cat log | grep -c 'standby')"
 echo -e "Total earning: $(cat log | grep 'currentRewards' | sed -E 's/.*[^0-9\.]([0-9\.]+)[^0-9\.]*$/\1/' | awk '{s+=$1} END {print s}')"
+echo "############################################"
+echo "# Get list Active run                      #"
+echo "# cat log | grep active -B 2 -A 5          #"
+echo "# Get list Not staked                      #"
+echo "# cat log | grep \"''\" -B 2 -A 5          #"
+echo "############################################"
 exit 1
 }
 docker ps --format '{{.Names}}' | grep '^shardeum-node' | while read docker_name; do

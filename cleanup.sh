@@ -9,6 +9,8 @@ if [[ "$CONFIRM" == "y" ]]; then
   done  
   echo "Delete Image"
   docker image rm -f test-dashboard
+  echo "Delete Network"
+  docker network rm shardeum-net
   echo "Delete Complete"
 fi
 

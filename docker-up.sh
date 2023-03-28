@@ -22,10 +22,11 @@ EXISTING_ARCHIVERS='[{"ip":"18.194.3.6","port":4000,"publicKey":"758b1c119412298
 SHMEXT=9001
 SHMINT=10001
 SERVERIP=$(curl https://ipinfo.io/ip)
+docker network create --driver bridge shardeum-net
 for index in $(seq $START_FROM $((START_FROM+SHARDEUM_INSTANCE-1))); do
   echo "$((SHMEXT + index))"
   echo "$((SHMINT + index))"
-  docker run -d --restart unless-stopped --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \
+  docker run -d --restart unless-stopped --network shardeum-net --name shardeum-node-$index -e SHMEXT=$((SHMEXT + index))  -e SHMINT=$((SHMINT + index)) \
   -p $((SHMEXT + index)):$((SHMEXT + index)) -p $((SHMINT + index)):$((SHMINT + index)) \
   -e APP_SEEDLIST="archiver-sphinx.shardeum.org" -e APP_MONITOR="monitor-sphinx.shardeum.org" -e APP_IP=auto \
   -e SERVERIP=$SERVERIP -e EXISTING_ARCHIVERS=$EXISTING_ARCHIVERS test-dashboard || continue

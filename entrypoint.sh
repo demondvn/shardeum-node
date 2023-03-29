@@ -104,7 +104,7 @@ echo "Start"
 # operator-cli gui start
 # fi
 export SERVERIP=$(curl https://ipinfo.io/ip)
-
+export APP_IP=$SERVERIP
 operator-cli start 
 operator-cli set external_port $SHMEXT
 operator-cli set internal_port $SHMINT
